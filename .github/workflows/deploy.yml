@@ -32,11 +32,11 @@ jobs:
           # Check if master branch exists locally
           if ! git show-ref --verify --quiet refs/heads/master; then
             echo "Creating master branch"
-            git branch master
+            git branch -M master
           fi
           
           # Switch to master branch
-          git checkout master
+          # git checkout master
 
           # Push to master branch and capture the output
           push_output=$(git push $PWS_URL master 2>&1)
@@ -46,3 +46,4 @@ jobs:
             exit 1
           fi
           echo "Push successful with output: $push_output"
+          git branch -M main

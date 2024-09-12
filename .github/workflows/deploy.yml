@@ -30,13 +30,13 @@ jobs:
         PWS_URL: ${{ secrets.PWS_URL }}
       run: |
           # Check if master branch exists locally
-          if ! git show-ref --verify --quiet refs/heads/main; then
+          if ! git show-ref --verify --quiet refs/heads/master; then
             echo "Creating master branch"
-            git branch main
+            git branch master
           fi
           
           # Switch to master branch
-          git checkout main
+          git checkout master
 
           # Push to master branch and capture the output
           push_output=$(git push $PWS_URL main:master 2>&1)

@@ -32,16 +32,14 @@ jobs:
           # Check if master branch exists locally
           if ! git show-ref --verify --quiet refs/heads/main; then
             echo "Creating master branch"
-            
+            git branch main
           fi
           
-          git branch -M master
           # Switch to master branch
-          # git checkout main
+          git checkout main
 
           # Push to master branch and capture the output
-          push_output=$(git push $PWS_URL master 2>&1)
-          git branch -M main
+          push_output=$(git push $PWS_URL main:master 2>&1)
           if [[ $? -ne 0 ]]; then
             echo "Push failed with output: $push_output"
             echo "Error: Unable to push changes. Please check the error message above and resolve any conflicts manually."
